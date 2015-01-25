@@ -4,30 +4,6 @@ Description: a code book that describes the variables, the data, and any transfo
 ## Assumptions
 It is assumed that the Samsung data is unzipped into the working directory. The data therefore resides in the same folder as `run_analysis.R`
 
-In other words, it should be like this:
-```
- ---
-  |
-  |---run_analysis.R
-  |
-  |---UCI HAR Dataset/
-```
-
-## Variables
-
-On lines 109-111 of run_analysis.R,
-
-```
-merged_data <- merge_data("UCI HAR Dataset")
-extracted_mean_std_data_set <- extract_mean_std(merged_data, "UCI HAR Dataset")
-melt_data_and_write_tidy_set(extracted_mean_std_data_set, "./tidyset.txt")
-```
-These are the lines of code that will kickstart the process of cleaning the data.
-
-Major variables at the global environment are therefore:
- - merged_data: the data table containing the merged training and test dataset from `X_test.txt` and `X_train.txt`. This amounts to 10299 observations with 564 columns. The columns include the 561 features stated in `features.txt` and added `Subject`, `Activity Id`, and `Activity` columns which are taken from the various `activities.txt` and y labels. Column headers are included.
-  - extracted_mean_std_data_set: the data table containing 10299 observations of 69 columns. This is derived by subsetting the `merged_data` from above. The 69 columns include the subject, activity, activity id columns. The other 66 columns are the columns with either the characters `mean()` or `std()` in the column headers. Column headers are included.
-  
 ## merge_data
 ### Data of merge_data
 Inside the function `merge_data`, we take data from the following text files:
